@@ -10,8 +10,23 @@ def get_indices_of_item_weights(weights, length, limit):
     ht = HashTable(16)
 
     """
-    YOUR CODE HERE
+    Get Indices of Item Weight
     """
+
+    # weights is a list
+    if not isinstance(weights, list):
+        # Error if weights does not return a list
+        print(f"There was an issue with weights: {weights}")
+
+    # length is a integer
+    if not isinstance(length, int):
+        # Error if length does not return a integer
+        print(f"There was an issue with length: {length}")
+
+    # limit is a integer
+    if not isinstance(limit, int):
+        # Error if limit does not return a integer
+        print(f"There was an issue with limit: {limit}")
 
     return None
 
