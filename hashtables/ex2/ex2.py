@@ -23,12 +23,71 @@ def reconstruct_trip(tickets, length):
     The ticket for your first flight has a destination with a source of NONE,
     and the ticket for your final flight has a source with a destination of NONE.
     """
+    destination = None
 
     # Add Tickets to the HashTable
-    for i in length:
-        hash_table_insert(hashtable, i, tickets[i])
+    for i in range(length):
+        hash_table_insert(hashtable, tickets[i].source, tickets[i].destination)
 
-    return None
+    # Get First ticket
+    destination = hash_table_retrieve(hashtable, "NONE")
+
+    i = 0 # index
+
+    # Loop thru until destination is NONE
+    while not destination == "NONE":
+        route[i] = destination
+        destination = hash_table_retrieve(hashtable, destination)
+        i += 1
+
+    # Remove Last None element
+    route.pop()
+
+
+    # for t in range(length):
+
+    #     # Get ticket for t index
+    #     ticket = hash_table_retrieve(hashtable, "ticket_" + str(t))
+
+    #     if ticket is None:
+    #         continue
+
+    #     # Get the First Ticket
+    #     if hash_table_retrieve(hashtable, ticket.source) == None:
+    #         # Push destination to the Route List
+    #         destination = ticket.destination
+    #         route.append(destination)
+    #         # Remove from hashtable 
+    #         hash_table_remove(t)
+    #         break
+    
+    # # Loop Thru HashTable of tickets to get next ticket
+    # t = 1 
+    # while t < length:
+
+    #     # Get ticket for t index
+    #     ticket = hash_table_retrieve(hashtable, "ticket_" + str(t))
+
+    #     # if ticket is None go to next
+    #     if ticket is None:
+    #         t += 1
+
+    #     # Look for ticket by destination
+    #     if hash_table_retrieve(hashtable, ticket.source) == destination:
+    #         # Get new destination
+    #         destination = ticket.destination
+    #         # Check if destination is None, exit loop this should be last ticket
+    #         if destination is None:
+    #             break
+
+    #         # Push destination to the Route List
+    #         route.append(ticket.destination)
+    #         # Remove from hashtable 
+    #         hash_table_remove(t)
+    #         # Go back to start, to search for next destination
+    #         t = 1
+
+    return route
 
 
 # Test function
