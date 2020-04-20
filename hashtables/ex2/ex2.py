@@ -24,6 +24,10 @@ def reconstruct_trip(tickets, length):
     and the ticket for your final flight has a source with a destination of NONE.
     """
 
+    # Add Tickets to the HashTable
+    for i in length:
+        hash_table_insert(hashtable, i, tickets[i])
+
     return None
 
 
@@ -46,4 +50,5 @@ expected = ["LAX", "SFO", "BHM", "FLG", "XNA", "SAP",
             "SLC", "PIT", "ORD"]
 
 result = reconstruct_trip(tickets, 10)
+
 print(result)
