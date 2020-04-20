@@ -18,7 +18,7 @@ def get_indices_of_item_weights(weights, length, limit):
         # Error if weights does not return a list
         print(f"There was an issue with weights: {weights}")
 
-    # length is a integer
+    # length is the length of the weights array
     if not isinstance(length, int):
         # Error if length does not return a integer
         print(f"There was an issue with length: {length}")
@@ -27,6 +27,11 @@ def get_indices_of_item_weights(weights, length, limit):
     if not isinstance(limit, int):
         # Error if limit does not return a integer
         print(f"There was an issue with limit: {limit}")
+
+    # Loop thru weights and add each to the hash table
+    for weight in weights:
+        if weight < limit:
+            hash_table_insert(ht, weight, length)
 
     return None
 
